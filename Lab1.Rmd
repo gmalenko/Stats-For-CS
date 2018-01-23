@@ -1,12 +1,13 @@
 ---
 title: "Untitled"
 output: word_document
+---laytech?
 ---
 ```{r}
 source("http://www.openintro.org/stat/data/arbuthnot.R") 
 ```
 
-##Exercise 1:  What caommand would you use to extract just the counts of girls baptized?
+##Exercise 1:  What command would you use to extract just the counts of girls baptized?
 
 ```{r}
 arbuthnot$girls
