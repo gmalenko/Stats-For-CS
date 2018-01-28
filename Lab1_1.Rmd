@@ -1,0 +1,108 @@
+---
+title: "Lab 1"
+output: word_document
+---
+```{r}
+source("http://www.openintro.org/stat/data/arbuthnot.R") 
+```
+
+##Exercise 1:  What caommand would you use to extract just the counts of girls baptized?
+
+```{r}
+arbuthnot$girls
+```
+
+##Exercise 2: Use the information in the help file to add a title to your plot and to give the x- and y- axes more appropriate names.
+```{r}
+plot(x = arbuthnot$year, y = arbuthnot$girls, type = "l", ylab = "Total Number of Baptisms (Girls)", xlab = "Years")
+```
+
+## Make a plot of the proportion of boys over time
+```{r}
+plot(arbuthnot$year, arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls), type = "l",ylab = "Porportion of Boys", xlab = "Years")
+```
+
+```{r}
+source("http://www.openintro.org/stat/data/present.R") 
+```
+##1.What years are included in this data set? What are the dimensions of the data frame, and what are the variable (i.e., column) names?
+```{r}
+dim(present)
+```
+```{r}
+names(present)
+```
+##There are 63 rows of data with 3 column names.  The column names are "year", "boys", and "girls".
+
+##2.How do the present-day total birth counts per year compare to Arbuthnot's? Are they on a similar scale? Explain your reasoning
+```{r}
+plot(present$year, present$boys + present$girls, type ="l",ylab = "Total Births", xlab = "Years")
+```
+```{r}
+plot(arbuthnot$year, arbuthnot$boys + arbuthnot$girls, type ="l", ylab = "Total Births", xlab = "Years")
+```
+
+#There are more births per year in the present-day data than the Arbuthnot's data.  There is an early drop off in Arbuthnots but not in the present day.  While both sets of data seem to recover as time goes on, the data sets are not similar.
+
+##3. Does Arbuthnot's observation about boys being born in greater proportion than girls hold up in the U.S. during this time period? Explain.
+```{r}
+plot(present$year, present$boys, type ="l",ylab = "Total Births (Boys)", xlab = "Years")
+```
+```{r}
+plot(present$year, present$girls, type ="l",ylab = "Total Births (Girls)", xlab = "Years")
+```
+
+##No, Arbuthnot's obercation about boys being born in greater numbers does not hold up in the U.S during this time periosd.  The amounts are about equal.
+
+##4. Make a plot that displays the boy-to-girl ratio for every year in the data set. Give the plot an informative title, and label the x- and y-axes with useful titles. What trend do you see? Export your plot and include it with your answer to this question. 
+
+```{r}
+plot(present$boys/(present$boys + present$girls), type ="l",ylab = "Ratio Boys to Girls", xlab = "Years")
+```
+##As the year increases, the ratio decreases
+
+##Find and report the 5-number summary
+```{r}
+quantile(present$boys)
+```
+```{r}
+quantile(present$girls)
+```
+
+
+##Looking at your box plot, you will see that there are three outliers present. Find the values for those outliers, and then do the fence calculations needed to classify each outlier as a mild low, extreme low, mild high, or extreme high outlier. Show and label your calculations, and explain your reasoning.
+
+```{r}
+boxplot(present[,-1])
+```
+
+```{r}
+IQR(present$girls)
+quantile(present$girls,.25) - (1.5 * IQR(present$girls))
+quantile(present$girls,.75) + (1.5 * IQR(present$girls))
+quantile(present$girls,.25) - (3 * IQR(present$girls))
+quantile(present$girls,.75) + (3 * IQR(present$girls))
+```
+
+```{r}
+IQR(present$boys)
+quantile(present$boys,.25) - (1.5 * IQR(present$boys))
+quantile(present$boys,.75) + (1.5 * IQR(present$boys))
+quantile(present$boys,.25) - (3 * IQR(present$boys))
+quantile(present$boys,.75) + (3 * IQR(present$boys))
+```
+
+#The outlier are extreme low.
+
+##In what year did we see the lowest total number of births in the U.S.? Include a screenshot of your workspace with comments that explain how you arrived at the answer to this question. 
+```{r}
+plot(present$year, present$boys+present$girls, type ="l",ylab = "Total Births (Boys)", xlab = "Years")
+```
+#1973
+
+##Generate a stem-and-leaf plot of the total U.S. births using scale = 2. Explain what value 27 | 9 represents in the plot. How does this value compare to the actual birth count that it represents? Also, describe the shape of the distribution. Include a screenshot of your stem-and-leaf plot.
+```{r}
+stem(present$boys + present$girls, scale=2)
+```
+
+#The plot is left skewed.  27|9 means that there was a number that began with 279xxxxx.  Its not exact number because a lot of the numbers have been dropped.

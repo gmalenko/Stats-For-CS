@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Lab 1"
 output: word_document
 ---
 ```{r}
@@ -15,6 +15,10 @@ arbuthnot$girls
 ##Exercise 2: Use the information in the help file to add a title to your plot and to give the x- and y- axes more appropriate names.
 
 ```{r}
-plot(arbuthnot$year, arbuthnot$boys + arbuthnot$girls, type = "l", ylab = "Total Number of Baptisms", xlab = "Years")
+plot(arbuthnot$year, (arbuthnot$boys + arbuthnot$girls)/(arbuthnot$boys), type = "l", ylab = "Total Number of Baptisms", xlab = "Years")
 ```
 
+##Exercise 2: Make a plot of the proportion of boys over time.
+```{r}
+plot(arbuthnot$year, arbuthnot$boys, type = "l", ylab = "Total Number of Baptisms", xlab = "Years")
+```
