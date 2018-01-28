@@ -1,0 +1,19 @@
+---
+title: "Lab2"
+output: word_document
+---
+```{r}
+source("http://www.openintro.org/stat/data/cdc.R")
+```
+```{r}
+names(cdc)
+```
+
+##Exercise 1:  How many cases are there in this data set? How many variables? For each variable, identify its data type (i.e., nominal, ordinal, discrete numeric, or continuous numeric).
+```{r}
+smoke <- table(cdc$smoke100)
+barplot(smoke)
+```
+##Exercise 2: Generate 5-number summaries for both height and age (Hint: There should be 5 numbers in each summary, not 6), and compute the interquartile range for each. Compute and plot the relative frequency distributions for hlthplan and exerany. How many females are in the sample? What percentage of the people in this sample report being in good health?
+
+

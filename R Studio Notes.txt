@@ -1,0 +1,7 @@
+Build with R version `r getRVersion()`
+
+Exercise 3 for Lab 1.  Help Command to embelish the plot command.  Like good lables.  Needs good limits to answer question properly
+
+ylim = c(0,1) -  add this to plot command
+
+help(plot)
