@@ -70,3 +70,26 @@ under23_and_smoke <- subset(cdc, cdc$smoke100 == TRUE & cdc$age < 23)
 nrow(under23_and_smoke)
 ```
 #620 people under the age of 23 have smoked at least 100 cigarettes
+
+##Exercise 5: What does this boxplot display suggest about the association between BMI and general health?
+```{r}
+bmi <- (cdc$weight/cdc$height^2) * 703
+boxplot(bmi ~ cdc$genhlth)
+```
+#The poorer a person is in health, the higher BMI they have.
+
+##Exercise 5 continued: Pick another categorical variable from the data set and generate a boxplot display to see how it relates to BMI. State the variable you chose, explain why you might think it would have a relationship to BMI, and indicate what the boxplot display seems to suggest.
+```{r}
+bmi <- (cdc$weight/cdc$height^2) * 703
+boxplot(bmi ~ cdc$gender)
+```
+#Females generally have a lower average BMI than men.  However, Females have a much larger outlier than men.
+
+#Exercise 6:  Note that you can flip between plots that you've created by clicking the forward and backward arrows in the lower right region of RStudio, just above the plots. How do these two histograms compare? Describe the shape of the BMI distribution. Include both histograms as part of your answer to this question.  NEED TO FINISH
+```{r}
+hist(bmi)
+hist(bmi, breaks = 50)
+```
+
+###Homework Assignment
+2:13'
