@@ -12,7 +12,7 @@ names(cdc)
 ##Exercise 1:  How many cases are there in this data set? How many variables? For each variable, identify its data type (i.e., nominal, ordinal, discrete numeric, or continuous numeric).
 
 #Cases: 2000
-#Variables: 9. GenHealth (ordinal),Exerany (ordinal), hlthplan (ordinal), smoke100 (discrete numeric), height (continuout numeric), weight (continuous numeric), wtdesire (continuous numeric), age (continuous numeric)
+#Variables: 9. GenHealth (ordinal),Exerany (nominal), hlthplan (nominal), smoke100 (nominal), height (continuout numeric), weight (continuous numeric), wtdesire (continuous numeric), age (continuous numeric), gender (nominal)
 
 ##Exercise 2: Generate 5-number summaries for both height and age (Hint: There should be 5 numbers in each summary, not 6), and compute the interquartile range for each.
 
@@ -22,7 +22,7 @@ quantile(cdc$height)
 ```
 #Height Interquartile Range
 ```{r}
-quantile(cdc$height ,.75) -  quantile(cdc$heightca ,.25)
+IQR(cdc$height)
 ```
 
 #Age
@@ -32,7 +32,7 @@ quantile(cdc$age)
 
 #Age Interquartile Range
 ```{r}
-quantile(cdc$age ,.75) -  quantile(cdc$age ,.25)
+IQR(cdc$age)
 ```
 
 ##Exercise 2 continued: Compute and plot the relative frequency distributions for hlthplan and exerany. How many females are in the sample? What percentage of the people in this sample report being in good health?

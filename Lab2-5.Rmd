@@ -1,0 +1,29 @@
+---
+  title: "Lab2"
+output: word_document
+---
+```
+
+eight_one_first <- c(56,47,49,37,38,60,50,43,43,59,50,56,54,58)
+eight_one_second <- c(53,21,32,49,45,38,44,33,32,43,53,46,36,48,39,35,37,36,39,45)
+```
+```{r}
+stem(eight_one_first)
+```
+```{r}
+stem(eight_one_first)
+```
+
+```{r}
+summary(eight_one_first)
+```
+
+```{r}
+summary(eight_one_second)
+```
+
+```{r}
+boxplot(eight_one_first, eight_one_second, xlab="Weeks", ylab="Blocked Intrustions")
+```
+
+#There were less blocked intrustions the 2nd 20 days
