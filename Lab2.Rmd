@@ -92,4 +92,27 @@ hist(bmi, breaks = 50)
 ```
 
 ###Homework Assignment
-2:13'
+##1. . Make a scatterplot of weight (x) versus wtdesire (y). Describe the apparent relationship between these two variables.
+```{r}
+plot(cdc$weight ~ cdc$wtdesire, main="Weight VS Desired Weight", xlab = "Weight", ylab="Desired Weight")
+```
+#There are people who want to lose weight
+
+##2 Let's consider a new variable: the difference between desired weight (wtdesire) and current weight (weight). Create this new variable by subtracting the two columns in the data frame in the order I specified above and assigning the result to a new object called wdiff. Answer this question with the R code you used to create this variable.
+
+```{r}
+wdiff <- cdc$weight - cdc$wtdesire
+```
+
+##3.If an observed wdiff is 0, how do a person's actual weight and desired weight compare? How do they compare if the wdiff is positive? Negative?
+#If wdiff is 0 then there a person weighs at their desired weight.  If positive, a person wishes to lose weight.  If negative, they wish to gain weight
+
+##4. Describe the distribution of wdiff in terms of its center, shape, and spread. What does this information tell us about how people feel about their current weight? Include a histogram and summary statistics as part of your answer.
+```{r}
+hist(wdiff)
+```
+```{r}
+summary(wdiff)
+```
+
+#
