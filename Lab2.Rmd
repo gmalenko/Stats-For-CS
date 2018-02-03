@@ -37,8 +37,17 @@ IQR(cdc$age)
 
 ##Exercise 2 continued: Compute and plot the relative frequency distributions for hlthplan and exerany. How many females are in the sample? What percentage of the people in this sample report being in good health?
 
+
+```{r}
+table(cdc$hlthplan)/nrow(cdc)
+```
+
 ```{r}
 barplot(table(cdc$hlthplan)/nrow(cdc))
+```
+
+```{r}
+table(cdc$exerany)/nrow(cdc)
 ```
 
 ```{r}
@@ -52,16 +61,20 @@ table(cdc$gender)
 #There are 104321 females in the sample
 
 ```{r}
-(6972/(4657+5675+2019+611+6972)) * 100
+table(cdc$genhlth)
 ```
-#34.97% report being in good health
+
+```{r}
+(5675/(4657+5675+2019+677+6972)) * 100
+```
+#28.37% report being in good health
 
 ##Exercise 3 What does your mosaic plot reveal regarding the association between smoking habits and gender?
 
 ```{r}
-mosaicplot(table(cdc$gender, cdc$smoke100))
+mosaicplot(table(cdc$smoke100, cdc$gender), main = "Smoking habits and Gender")
 ```
-#There is a greater number of Men who have smoked at least 100 cigarettes.  However there are more femailes who have no smokes at least 100 cigarettes
+#There is a greater number of Men who have smoked at least 100 cigarettes.  However there are more females who have not smokes at least 100 cigarettes
 
 ##Exercise 4: Create a new object called under23_and_smoke that contains all observations for respondents under the age of 23 who have smoked at least 100 cigarettes in their lifetimes. How many respondents are under age 23 and have smoked at least 100 cigarettes in their lifetimes? Include supporting R output as part of your answer to this exercise.
 

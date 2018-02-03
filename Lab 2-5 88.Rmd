@@ -1,0 +1,38 @@
+---
+title: "Lab2-5b"
+output: word_document
+---
+###8.8 lab
+
+```{r}
+eight_eight_one <- c(19,24,12,19,18,24,8,5,9,20,13,11,1,12,11,10,22,21,7,16,15,15,26,16,1,13,21,21,20,19)
+eight_eight_two <- c(17,24,21,22,26,22,19,21,23,11,19,14,23,25,26,15,17,26,21,18,19,21,24,18,16,20,21,20,23,33)
+eight_eight_three <- c(56,52,13,34,33,18,44,41,48,75,24,19,35,27,46,62,71,24,66,94,40,18,15,39,53,23,41,78,15,35)
+```
+##a
+
+```{r}
+hist(eight_eight_one)
+```
+##symmetric
+```{r}
+hist(eight_eight_two)
+```
+#skewed right
+```{r}
+hist(eight_eight_three)
+```
+
+#skewed right
+
+```{r}
+summary(eight_eight_one)
+```
+```{r}
+summary(eight_eight_two)
+```
+
+```{r}
+summary(eight_eight_three)
+```
+##Yes.  8.8.1 is symmetric the numbers are evently distributed. 8.8.2 and 8.8.3 are skewed right.  The numbers are toward the left of the median

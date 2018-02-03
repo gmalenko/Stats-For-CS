@@ -1,0 +1,34 @@
+---
+title: "Lab2-7 89"
+output: word_document
+---
+
+```{r}
+eight_nine_one_a <- c(43,37,50,51,58,105,52,45,45,10)
+```
+
+```{r}
+summary(eight_nine_one)
+```
+
+```{r}
+sd(eight_nine_one_a)
+```
+
+```{r}
+(3 * IQR(eight_nine_one_a))
+```
+
+```{r}
+eight_nine_one_b <- c(43,37,50,51,58,52,45,45,10)
+```
+
+```{r}
+summary(eight_nine_one_b)
+```
+
+```{r}
+sd(eight_nine_one_b)
+```
+
+#Deleting the outliers lowers the mean, median, quartiles and standard deviation.  However the distrubution remains the same
