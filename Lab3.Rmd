@@ -1,0 +1,33 @@
+---
+title: "Lab3"
+output: word_document
+---
+
+```{r}
+download.file("http://www.openintro.org/stat/data/kobe.RData", destfile =
+"kobe.RData")
+load("kobe.RData")
+head(kobe)
+```
+
+## R Markdown
+
+```{r}
+ kobe$basket[1:9]
+```
+
+###Exercise 1: What does a streak length of 1 mean (i.e., how many hits and misses are in astreak of 1)? What about a streak length of 0?
+##Sreak of 1 means a H followed by a M.  A streak of 0 is a M followed by a M/
+
+
+###Exercise 2: Describe the distribution of Kobe's streak lengths from the 2009 NBA finals.What was his typical streak length? How long was his longest streak of baskets?
+```{r}
+kobe_streak <- calc_streak(kobe$basket)
+barplot(table(kobe_streak))
+```
+##The distribution is left skewed.  
+
+```{r}
+summary(kobe_streak)
+```
+##The typical streak is 0.  The longest is 4.
