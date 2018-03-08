@@ -1,0 +1,30 @@
+---
+title: "Lab4"
+output: word_document
+---
+
+```{r}
+download.file("http://www.openintro.org/stat/data/bdims.RData", destfile =
+"bdims.RData")
+load("bdims.RData")
+mdims <- subset(bdims, bdims$sex == 1) 
+fdims <- subset(bdims, bdims$sex == 0)
+
+```
+
+
+##Exercise 1: Generate separate histograms of the men's and women's heights. Then, compare and contrast the center, spread, and shape of these two height distributions. 
+
+
+```{r}
+#Male Height
+hist(mdims$hgt, main = "Men's Hight in CM", xlab = "Height(cm)")
+summary(mdims$hgt) # 5 Number Summary of Men's Height in cM.
+```
+
+```{r}
+#Female Height
+hist(fdims$hgt, main = "Women's Hight in CM", xlab = "Height(cm)")
+summary(fdims$hgt) # 5 Number Summary of Women's Height in cM.
+```
+###The men's distribution appears to be symmetical while the womens distribution is skewed left.  The Men's median is 177.8 while the Women's is 164.5. 
