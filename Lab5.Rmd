@@ -1,0 +1,27 @@
+---
+title: "Lab5"
+output: word_document
+---
+
+```{r}
+download.file("http://www.openintro.org/stat/data/ames.RData", destfile = "ames.RData")
+load("ames.RData")
+
+area <- ames$Gr.Liv.Area
+price <- ames$SalePrice
+
+```
+##Exercise 1: Describe the shape, center (mean), and spread (standard deviation) of this population distribution
+
+
+```{r, cache = TRUE}
+mean(area) #The mean of the area
+sd(area) #The standard deviation of the area
+```
+
+###The distribution is right skewed.
+
+
+```{r, cache = TRUE}
+samp1 <- sample(area, 50)
+```
