@@ -17,7 +17,7 @@ head(kobe)
  kobe$basket[1:9] # Kobe's sequence of his and misses.
 ```
 
-###Streak length of 1 means a hit (H) followed by a miss (M).  A streak 0 means zeio hits and one miss (M).
+###Streak length of 1 means a hit (H) followed by a miss (M).  A streak 0 means zero hits and one miss (M).
 
 
 ##Exercise 2: Describe the distribution of Kobe's streak lengths from the 2009 NBA finals.What was his typical streak length? How long was his longest streak of baskets?
