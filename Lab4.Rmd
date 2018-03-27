@@ -9,7 +9,8 @@ download.file("http://www.openintro.org/stat/data/bdims.RData", destfile =
 load("bdims.RData")
 mdims <- subset(bdims, bdims$sex == 1) 
 fdims <- subset(bdims, bdims$sex == 0)
-
+mhgtmean <- mean(mdims$hgt)
+mhgtsd <- sd(mdims$hgt)
 ```
 
 
@@ -24,20 +25,20 @@ summary(mdims$hgt) # 5 Number Summary of Men's Height in cM.
 
 ```{r}
 #Female Height
-hist(fdims$hgt, main = "Women's Hight in CM", xlab = "Height(cm)")
+hist(fdims$hgt, main = "Women's Height in CM", xlab = "Height(cm)")
 summary(fdims$hgt) # 5 Number Summary of Women's Height in cM.
 ```
 ###The men's distribution appears to be symmetical while the womens distribution is skewed left.  The Men's median is 177.8 while the Women's is 164.5. 
 
 ##Exercise 2: Based on this plot, does it appear that the men's height data follow a nearly normal distribution? Explain.
 ```{r}
-hist(mdims$hgt, probability = TRUE, ylim = c(0,0.1))
+hist(mdims$hgt, main = "Mens's Height in CM", probability = TRUE, xlab="Height(cm)", ylim = c(0,0.1))
 x <- 150:200
 y <- dnorm(x = x, mean = mhgtmean, sd = mhgtsd)
 lines(x = x, y = y, col = "blue")
 ```
 
-###Based on this plot, the data has a normal distribution.
+###Based on this plot, the data follows a normal distribution.  It follows the curve that has been imprinted from the dnorm command
 
 ##Exercise 3: Make a normal probability plot of sim_norm. Do all of the points fall on the line? How does this plot compare to the probability plot for the actual data?
 ```{r}
@@ -47,6 +48,7 @@ sim_norm <- rnorm(n = length(mdims$hgt), mean = mhgtmean, sd = mhgtsd)
 qqnorm(sim_norm)
 qqline(sim_norm)
 ```
+
 ###When comparing the simulated data most of the points fall either near or close o the line.  The simulated data is very close to the actual data.
 
 ##Exercise 4: Does the normal probability plot for mdims$hgt look similar to the plots created for the simulated data? That is, do the plots provide evidence that the male heights are nearly normal? Explain.
@@ -59,7 +61,7 @@ qqnormsim(mdims$hgt)
 ```{r}
 mwgtmean <- mean(mdims$wgt)
 mwgtsd <- sd(mdims$wgt)
-hist(mdims$wgt, probability = TRUE, ylim = c(0,0.1))
+hist(mdims$wgt, main="Men's Weight in Kg", probability = TRUE, xlab = "Weight(kg)", ylim = c(0,0.1))
 x <- 0:1000
 y <- dnorm(x = x, mean = mwgtmean, sd = mwgtsd)
 lines(x = x, y = y, col = "blue")
