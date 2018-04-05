@@ -15,13 +15,109 @@ price <- ames$SalePrice
 
 
 ```{r, cache = TRUE}
+summary(area)
+hist(area, main = "Area of Houses in Ames Iowa", xlab = "Area")
 mean(area) #The mean of the area
 sd(area) #The standard deviation of the area
 ```
 
-###The distribution is right skewed.
+###The shape of the data is right skewed.  The mean is 1500, while the standard deviation is 505.5089 
 
 
+##Exercise 2: Calculate summary statistics and plot a histogram of your sample. Describe the shape, center (mean), and spread (standard deviation) of this sample distribution. How does it compare to the population distribution you described in Exercise 1? 
 ```{r, cache = TRUE}
 samp1 <- sample(area, 50)
+summary(samp1)
+mean(samp1) #The mean of samp1
+sd(samp1) #The standard deviation of the area
+hist(samp1, main = "Area of Houses in samp1", xlab = "Area")
 ```
+
+###The shape of the data CHANGE ME skewed  The mean is 1619.32 while the standard deviation is 650.7491.While comparing this population to Exercise 1, The mean and the standard deviation are larger with Example 2 and the population is CHANGE ME skewed.
+
+##Exercise 3: Take a second sample, also of size 50, and name it samp2. How does the mean of samp2 compare with the mean of samp1? Suppose we took two more samples, one of size 100 and one of size 1000. Which would you think would provide a more accurate estimate of the population mean? Why?
+```{r, cache = TRUE}
+samp2 <- sample(area, 50)
+mean(samp2) #The mean of samp2
+```
+###The mean of sample 2 is 1427.06.  The mean is smaller than sample 1 and is closer to the true population mean than sample 1. If we took 2 more samples of size 100 and 1000, the size of 1000 would provide a more accurate estimate of the population mean.  With a larger sample size, its more likely we will have enough houses that will lowers the varability.
+
+##Exercise 4: How many elements are there in sample_means50? Describe the shape, center (mean), and spread (standard deviation) of the sampling distribution. How would you expect the sampling distribution to change if we instead collected 50,000 sample means?
+```{r, cache = TRUE}
+sample_means50 <- rep(0, 5000)
+for (i in 1:5000) {
+  samp <- sample(area, 50)
+  sample_means50[i] <- mean(samp)
+}
+hist(sample_means50, breaks = 25,main = "Area of Houses in sample_means50", xlab = "Area")
+mean(sample_means50) #The mean sample_means50
+sd(sample_means50) #The standard deviation of sample_means50
+```
+###There are 5000 elemenets in sample_means50. This is a normal distribution.  The mean is 1498.92 while the standard deviation is 69.50471.  If we were to collect 50,000 sample means, I would expect the mean to be closer to the population mean of 1499.69 with the distribution shapped normally.
+
+##Exercise 5: When the sample size is larger, what happens to the center (mean) of the sampling distribution? What about the spread (standard deviation)?
+```{r, cache = TRUE}
+graphics.off() #Found on StackExchange because of error
+par("mar") #Found on StackExchange because of error
+par(mar=c(1,1,1,1)) #Found on StackExchange because of error
+sample_means10 <- rep(0, 5000) 
+sample_means100 <- rep(0, 5000) 
+for (i in 1:5000) {
+  samp <- sample(area, 10)
+  sample_means10[i] <- mean(samp)
+  samp <- sample(area, 100)
+  sample_means100[i] <- mean(samp)
+}
+par(mfrow = c(3, 1))
+xlimits = range(sample_means10)
+hist(sample_means10, breaks = 20, xlim = xlimits, main = "Area of Houses in sample_means10", xlab = "Area")
+hist(sample_means50, breaks = 20, xlim = xlimits, main = "Area of Houses in sample_means50", xlab = "Area")
+hist(sample_means100, breaks = 20, xlim = xlimits, main = "Area of Houses in sample_means100", xlab = "Area")
+mean(sample_means10) #The mean of sample_means10
+sd(sample_means10) #The standard deviation of sample_means10
+mean(sample_means50) #The mean of sample_means50
+sd(sample_means50) #The standard deviation of the area 
+mean(sample_means100) #The mean of sample_means100
+sd(sample_means100) #The standard deviation of sample_means100
+```
+
+###When the sample size is larger, the mean approaches the population mean of 1499.69.  The mean of sample_means100 is 1499.179.  The spread decreases as the sample size increases.  The spread for sample_mean10 is 160.2164 while sample_means100 is 50.17834.
+
+
+#Homework Assignment
+##1. Take a random sample of size 50 from price. Using this sample, what is your best point estimate of the population mean home price?
+```{r, cache = TRUE}
+pricesamp1 <- sample(price, 50)
+mean(pricesamp1) #The mean of pricesamp1
+```
+###The best point estimate of the population mean for home price is 169967.6.
+
+##2.  Since you have access to the population, simulate the sampling distribution for the sample mean ofhome price by taking 5000 samples from the population of size 50 and computing 5000 price samplemeans. Store these means in a vector called sample_price_means50. Plot the data, then describe the shape of this simulated sampling distribution. Based on this simulated sampling distribution, what would you guess the mean home price of the population to be?
+```{r, cache = TRUE}
+sample_price_means50 <- rep(0, 5000)
+for (i in 1:5000) {
+  samp <- sample(price, 50)
+  sample_price_means50[i] <- mean(samp)
+}
+hist(sample_price_means50, main = "Prices of Houses in sample_price_means50", xlab = "Price")
+mean(sample_price_means50) #The mean of sample_price_means50
+sd(sample_price_means50) #The standard deviation of sample_price_means50
+```
+###The shape of the distribution can be describes as a normal distribution.  I wouls guess that the mean home price of the population would be 180743.5.
+
+##3.  Change your sample size from 50 to 150, and then generate a simulated sampling distribution using the same method as above. Store these means in a new vector called sample_price_means150. Compare and contrast the shape, center (mean), and spread (standard deviation) of your simulated sampling distributions for n = 50 and n = 150. Based on your simulated sampling distribution for samples of size n = 150, what would you guess to be the mean sale price of homes in Ames? Finally, calculate and report the actual population mean.
+```{r, cache = TRUE}
+sample_price_means150 <- rep(0, 5000)
+for (i in 1:5000) {
+  samp <- sample(price, 150)
+  sample_price_means150[i] <- mean(samp)
+}
+hist(sample_price_means150, main = "Price of Houses in sample_means100", xlab = "Price")
+mean(sample_price_means150) #The mean of sample_price_means150
+sd(sample_price_means150) #The standard deviation of sample_price_means150
+mean(price) #The mean of the whole sample
+```
+###The shape of this histogram would be best described as a noraml distribution.  This would be similar to the n = 50 distribution.  The mean of n=50 is 180743.5 while n=150 is 180773.  The standard deviation for n=50 is 11146.54 while n=150 is 6376.608.  As the sample size increases, the standard devition decreases while the mean gets closer to the population mean.  I would guess that the mean price of homes would be closer to 180800.  The mean price of homes is 180796.10.
+
+##4.  Of the sampling distributions from #2 and #3, which has a smaller spread (standard deviation)? If we're concerned with making estimates that are more often close to the true value, would we prefer a sampling distribution with a large or small spread? Explain your reasoning.
+### The variable sample_price_means150 has a smaller standard deviation of 6366.195.  In order to make a good estimate, we would like distributions to have a small spread.  With a small spread, we know that the data is clustered around the mean which makes the data more reliable.
