@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+output: word_document
+---
+
+```{r}
+download.file("http://www.openintro.org/stat/data/ames.RData", destfile ="ames.RData")
+load("ames.RData")
+
+population <- ames$Gr.Liv.Area
+samp <- sample(population, 60)
+```
+
+##Exercise 1: Plot a histogram of your sample of living areas. Then, describe the shape, center, and spread of your histogram. What would you say is the "typical" living area within your sample? Explain.
+
+```{r, cache=TRUE}
+hist(samp)
+```
+### Exercise 1 Answer
+
+##Exercise 2: Would you expect another student's sample distribution to be identical to yours? Would you expect it to be similar? Why or why not?
+
+###Exercise 2 Answer: No. 
+
+###Confidence Intervals
+```{r, cache=TRUE}
+sample_mean <- mean(samp)
+se <- sd(samp)/sqrt(60)
+lower <- sample_mean - 2 * se
+upper <- sample_mean + 2 * se
+c(lower, upper)
+```
