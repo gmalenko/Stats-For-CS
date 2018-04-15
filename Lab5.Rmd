@@ -57,9 +57,7 @@ sd(sample_means50) #The standard deviation of sample_means50
 
 ##Exercise 5: When the sample size is larger, what happens to the center (mean) of the sampling distribution? What about the spread (standard deviation)?
 ```{r, cache = TRUE}
-graphics.off() #Found on StackExchange because of error
-par("mar") #Found on StackExchange because of error
-par(mar=c(1,1,1,1)) #Found on StackExchange because of error
+
 sample_means10 <- rep(0, 5000) 
 sample_means100 <- rep(0, 5000) 
 for (i in 1:5000) {
