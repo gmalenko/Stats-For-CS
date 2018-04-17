@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Lab 6"
 output: word_document
 ---
 
@@ -14,15 +14,18 @@ samp <- sample(population, 60)
 ##Exercise 1: Plot a histogram of your sample of living areas. Then, describe the shape, center, and spread of your histogram. What would you say is the "typical" living area within your sample? Explain.
 
 ```{r, cache=TRUE}
-hist(samp)
+hist(samp, main = "Area of Houses in Ames Iowa", xlab = "Area")
+mean(samp) #The mean of the area
+sd(samp) #The standard deviation of the area
 ```
+
 ### Exercise 1 Answer
 
 ##Exercise 2: Would you expect another student's sample distribution to be identical to yours? Would you expect it to be similar? Why or why not?
 
-###Exercise 2 Answer: No. 
+###Exercise 2 Answer: No. Another student can recieve different set of 60 from the poplation.
 
-###Confidence Intervals
+##Confidence Intervals
 ```{r, cache=TRUE}
 sample_mean <- mean(samp)
 se <- sd(samp)/sqrt(60)
@@ -30,3 +33,100 @@ lower <- sample_mean - 2 * se
 upper <- sample_mean + 2 * se
 c(lower, upper)
 ```
+
+##Exercise 3: For a one-sample t confidence interval to be valid, the sampling distribution of the sample mean must be normally distributed. Check this assumption using the indirect methods demonstrated during class. (Note: If any outliers are present in your sample, you will need to include the relevant calculations to classify the outlier(s) as being either mild or extreme. Extreme outliers prevent us from applying the Central Limit Theorem.) 
+```{r, cache=TRUE}
+shapiro.test(samp) #Shapiro Wilk Test of samp
+boxplot(samp) #Boxplot of samp
+#qq Norm of Samp
+qqnorm(samp) 
+qqline(samp, col=2,lwd=2,lty=2)
+
+quantile(samp)
+IQR(samp)
+quantile(samp,.25) - ((1.5)*(IQR(samp))) #inner fence for low outlier
+quantile(samp,.25) - ((3)*(IQR(samp))) #Outer fence for low outlier
+quantile(samp,.75) + ((1.5)*(IQR(samp))) #Outer fence for low outlier
+quantile(samp,.75) + ((3)*(IQR(samp))) #Outer fence for low outlier
+
+```
+###Exercise 3 Answer: No. Another student can recieve different set of 60 from the poplation.
+
+##Exercise 4: Report your 95% confidence interval in the form . Then, carefully interpret your confidence interval in context
+
+###Exercise 4 Answer: Something
+
+##Exercise 5: What does the phrase "95% confident" mean? In other words, give an interpretation of the confidence level.
+
+###Exercise 5 Answer: Something
+
+
+##Exercise 6: Did your confidence interval capture the true mean living area of houses in Ames? Explain.
+```{r, cache=TRUE}
+mean(population) #The mean of the population
+```
+
+##Exercise 7: Each student in your class section should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to successfully capture the true population mean? Why? Write your confidence interval on the board. When everybody has done so, write down the confidence intervals created by all of the students in your class section and calculate the proportion of these intervals that successfully captured the true population mean. How does this proportion compare to the expected proportion? Why might it be different? Explain. 
+```{r, cache=TRUE}
+source('Lab6_class_results.R') #Constructed file with values from class
+
+#will print in range if population mean is between upper and lower values.  Will print not in range if the population mean is not between the upper and lower values
+for(i in 1:length(class_upper)){
+  cat("\nStudent #",i)
+  if((class_lower[i] <= mean(population)) & (mean(population >= class_upper[i]))){
+    
+    low <- cat(" - lower:", class_lower[i])
+    high <- cat(" upper:", class_upper[i])
+    cat(" in range")
+  }else
+  {
+    low <- cat(" - lowe:", class_lower[i])
+    high <- cat(" upper:", class_upper[i])
+    cat(" not in range")
+  }
+}
+
+```
+
+
+###Exercise 7 Answer: Something
+
+##Homework preparation
+```{r, cache=TRUE}
+samp_mean <- rep(NA, 50)
+samp_sd <- rep(NA, 50)
+n <- 60
+for(i in 1:50){
+samp <- sample(population, n) # obtain a sample of size n = 60 from the population
+samp_mean[i] <- mean(samp) # save sample mean in ith element of samp_mean
+samp_sd[i] <- sd(samp) # save sample sd in ith element of samp_sd
+}
+lower <- samp_mean - 2 * samp_sd/sqrt(n)
+upper <- samp_mean + 2 * samp_sd/sqrt(n)
+c(lower[1], upper[1]) #Upper and lower bounds for the first interval
+```
+
+#Homework
+##1. Using the following function (which was downloaded with the data set), plot all fifty of your 95% What proportion of your confidence intervals include the true population mean? Is this proportion exactly equal to the confidence level? Why might it differ?
+```{r, cache=TRUE}
+plot_ci(lower, upper, mean(population))
+
+```
+
+### Homework 1 Answer
+
+##2. What is the appropriate critical t value for a 98% confidence level with 59 df? Include R calculations for finding this critical t. (It could be helpful to also find the critical t using the invT command on your graphing calculator. Confirm that you get the same result using both methods to ensure that you used the correct R command.)
+
+```{r, cache=TRUE}
+qt(.975, 59) #98% confidence interval
+```
+
+
+##3. Construct fifty 98% confidence intervals. You do not need to obtain new samples; simply calculate new intervals based on the sample means and standard deviations you have already collected; you only need to change the critical t used in the calculations (it was 2 for a 95% confidence level and 59 df). Using the plot_ci function, plot all fifty intervals and calculate the proportion of intervals that include the true population mean. How does this percentage compare to the confidence level?
+```{r, cache=TRUE}
+conf_lower<- samp_mean - qt(.975,59) * samp_sd/sqrt(n)
+conf_upper<- samp_mean + qt(.975,59) * samp_sd/sqrt(n)
+plot_ci(conf_lower, conf_upper, mean(population))
+```
+
+### Homework 3 Answer1
