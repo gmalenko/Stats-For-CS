@@ -14,6 +14,7 @@ samp <- sample(population, 60)
 ##Exercise 1: Plot a histogram of your sample of living areas. Then, describe the shape, center, and spread of your histogram. What would you say is the "typical" living area within your sample? Explain.
 
 ```{r, cache=TRUE}
+summary(samp)
 hist(samp, main = "Area of Houses in Ames Iowa", xlab = "Area")
 mean(samp) #The mean of the area
 sd(samp) #The standard deviation of the area
