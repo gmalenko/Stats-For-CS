@@ -1,0 +1,26 @@
+---
+title: "HW14"
+output: html_document
+---
+```{r}
+sleepclass <- get(load('D:\\Development\\School\\Stats For CS\\Sleep_F17.rda'))
+```
+
+##a. Stat the claim to be tested and define the population parameter of interest
+###Claim: Adults should sleep at least 8 hours each night.
+###Population Parameter of interest: Statistics stufents of the first day of class.
+##B.  State and symbolize the null (H0) and alternative (H1) hypotheses.
+###Ho - Adults sleep at least 8 hours each night. H0 >= 8
+###H1 - Adults sleep less than 8 hours each night. H1 < 8
+##C.  What type of one-sample t test do you need to conduct?
+###. Right tailed
+
+```{r}
+summary(sleepclass)
+hist(hoursOfSleep)
+boxplot(hoursOfSleep)
+qqnorm(hoursOfSleep)
+qqline(hoursOfSleep)
+shapiro.test(hoursOfSleep)
+
+```
